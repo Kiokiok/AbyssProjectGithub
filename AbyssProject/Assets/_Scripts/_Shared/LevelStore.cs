@@ -26,7 +26,7 @@ public class LevelStore : MonoBehaviour
 
     public void UpdateFromNetValue(networkElement nl)
     {
-        elements[nl.index].Active = nl.Active;
+        elements[nl.index] = nl;
     }
 
     //

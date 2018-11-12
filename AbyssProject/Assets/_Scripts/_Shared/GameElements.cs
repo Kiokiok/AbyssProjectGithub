@@ -24,7 +24,12 @@ namespace AbyssObj
 
     }
 
-    
+    public struct NetChangeObserver
+    {
+        
+
+
+    }
 
     [System.Serializable]
     public struct networkElement
@@ -36,8 +41,6 @@ namespace AbyssObj
         public Quaternion rot;
 
         public bool active;
-
-        
 
         public bool Active
         {
@@ -55,8 +58,7 @@ namespace AbyssObj
             pos = vec;
             index = i;
             rot = quat;
-            //Active = act;
-            active = act;
+            active = act;  
         }
 
     }

@@ -15,14 +15,11 @@ public class LevelManagerNetwork : NetworkBehaviour {
 
 
     //------SERVER AND CLIENT VARIABLES-------
-    public class SyncListObjects : SyncListStruct<networkElement>
-    {
+  
 
-    }
+    public List<networkElement> ObjectsPC = new List<networkElement>();
 
-    public SyncListObjects ObjectsPC = new SyncListObjects();
-
-    public SyncListObjects ObjectsAR = new SyncListObjects();
+    public List<networkElement> ObjectsAR = new List<networkElement>();
 
     //------SERVER VARIABLES--------
 
@@ -75,12 +72,9 @@ public class LevelManagerNetwork : NetworkBehaviour {
 
         }
 
-
-
     }
 
     
-
     [Command]
     void CmdSERVERDEBUGLOG(NetworkInstanceId netID)
     {
@@ -188,22 +182,15 @@ public class LevelManagerNetwork : NetworkBehaviour {
 
         if (!hasAuthority || !isClient)
             return;
-       
-           
+                  
 
         ////////////////////////
         // Client functions
         ///////////////////////
         ///
 
-
         if (storage == null && isClient)
             FindStorageObject();
-
-        
-
-
-        
 
     }
 
