@@ -67,6 +67,7 @@
     <Compile Include="Assets\_Scripts\_Shared\LevelComponent.cs" />
     <Compile Include="Assets\_Scripts\_Shared\LevelManagerNetwork.cs" />
     <Compile Include="Assets\_Scripts\_Shared\LevelStore.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\NetworkElements\BaseNetworkElement.cs" />
     <Compile Include="Assets\_Scripts\_Shared\PlayerConnectionHandler.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Projects/GitProjectAbyss/AbyssProject/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

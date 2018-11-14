@@ -329,6 +329,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: 0
   levelElements: []
+  AllNetworkElements:
+  - name: 
+    TypeEvent: 0
+    ElementEvents: []
   lNet: {fileID: 0}
   elements: []
 --- !u!4 &1615031579

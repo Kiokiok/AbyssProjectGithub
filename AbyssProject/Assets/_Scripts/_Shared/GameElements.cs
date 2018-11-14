@@ -31,6 +31,10 @@ namespace AbyssObj
 
     }
 
+
+    //
+    //  ==> Element envoyé à travers  le network pour transmettre des valeurs
+    //
     [System.Serializable]
     public struct networkElement
     {
@@ -85,6 +89,15 @@ namespace AbyssObj
        PC,
        AR,
        
+
+    }
+
+    public enum CustomEventType
+    {
+        CalledOnTrue,
+        CalledOnFalse,
+        CalledOnChange
+
 
     }
 

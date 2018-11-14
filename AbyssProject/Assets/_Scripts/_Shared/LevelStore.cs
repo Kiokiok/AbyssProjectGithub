@@ -7,8 +7,14 @@ public class LevelStore : MonoBehaviour
 {
     public platform platform;
 
+    [HideInInspector]
     public GameObject[] levelElements;
 
+    public BaseNetworkElement[] AllNetworkElements;
+
+    [Space(15f)]
+
+    [HideInInspector]
     public LevelManagerNetwork lNet;
 
     // Liste principale des éléments networkés
@@ -24,6 +30,7 @@ public class LevelStore : MonoBehaviour
     // Partie Network
     //
 
+        // Reçoit un changement de valeur depuis le serveur
     public void UpdateFromNetValue(networkElement nl)
     {
         elements[nl.index] = nl;
@@ -33,6 +40,7 @@ public class LevelStore : MonoBehaviour
     // Partie local
     //
 
+        // Envoie un changement de valeur sur un bool, à l'index précisé
     public void ChangeValue(int index, bool value)
     {
         elements[index].Active = value;
