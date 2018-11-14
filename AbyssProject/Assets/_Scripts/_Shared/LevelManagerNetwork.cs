@@ -68,7 +68,7 @@ public class LevelManagerNetwork : NetworkBehaviour {
         }
         foreach (GameObject go in storage.levelElements)
         {
-            go.GetComponent<LevelComponent>().lNet = this;
+            //go.GetComponent<LevelComponent>().lNet = this;
 
         }
 
@@ -99,7 +99,7 @@ public class LevelManagerNetwork : NetworkBehaviour {
     [ClientRpc]
     void RpcClientDEBUGLOG(string message)
     {
-        Debug.Log(message + " -- " + netId);
+       // Debug.Log(message + " -- " + netId);
 
 
     }
@@ -108,7 +108,7 @@ public class LevelManagerNetwork : NetworkBehaviour {
     [Command]
     public void CmdUpdateValuesOnServerAR(networkElement elem)
     {
-        Debug.Log("UPDATE DES VALUES AR SUR SERVEUR");
+        //Debug.Log("UPDATE DES VALUES AR SUR SERVEUR");
         ObjectsAR.Add(elem);
 
         //platform = platform.AR;
@@ -117,7 +117,7 @@ public class LevelManagerNetwork : NetworkBehaviour {
     [Command]
     public void CmdUpdateValuesOnServerPC(networkElement elem)
     {
-        Debug.Log("UPDATE DES VALUES PC SUR SERVEUR");
+        //Debug.Log("UPDATE DES VALUES PC SUR SERVEUR");
 
         ObjectsPC.Add(elem);
 
@@ -151,8 +151,8 @@ public class LevelManagerNetwork : NetworkBehaviour {
         //
         if(isServer && otherLevNet)
         {
-            Debug.Log("Objects PC Amount = " + ObjectsPC.Count);
-            Debug.Log("Objects AR Amount = " + ObjectsAR.Count);
+           // Debug.Log("Objects PC Amount = " + ObjectsPC.Count);
+            // Debug.Log("Objects AR Amount = " + ObjectsAR.Count);
 
             if(platform == platform.AR)
             {
@@ -199,7 +199,7 @@ public class LevelManagerNetwork : NetworkBehaviour {
     {
 
         if (!storage) return;
-        Debug.Log("____________CALLED AR ELEMENT ON ENTITY = " + netId);
+        //Debug.Log("____________CALLED AR ELEMENT ON ENTITY = " + netId);
         //storage.levelElements[nl.index].GetComponent<LevelComponent>().Syncronizer(nl);
         storage.UpdateFromNetValue(nl);
     }
@@ -209,7 +209,7 @@ public class LevelManagerNetwork : NetworkBehaviour {
     {
 
         if (!storage) return;
-        Debug.Log("____________CALLED PC ELEMENT ON ENTITY = " + netId);
+        //Debug.Log("____________CALLED PC ELEMENT ON ENTITY = " + netId);
         //storage.levelElements[nl.index].GetComponent<LevelComponent>().Syncronizer(nl);
         storage.UpdateFromNetValue(nl);
     }

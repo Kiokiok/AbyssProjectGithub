@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+// La classe de base des évènements
+// Les évènements customs en hérite
+//
+// Elle est a placer sur un Gameobject dans la scène
 public class EventBase : MonoBehaviour
 {
 

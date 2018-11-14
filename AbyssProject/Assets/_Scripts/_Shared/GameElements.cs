@@ -46,16 +46,7 @@ namespace AbyssObj
 
         public bool active;
 
-        public bool Active
-        {
-            get { return active; }
-            set
-            {
-                active = value;
-
-            }
-
-        }
+        
 
         public networkElement(Vector3 vec, int i, Quaternion quat, bool act)
         {
@@ -76,10 +67,11 @@ namespace AbyssObj
         Booleanble=3,
     }
 
-    public enum InteractType
+    public enum NetworkedType
     {
         Sender =0,
         Receiver =1,
+        TwoWay = 2,
 
     }
 

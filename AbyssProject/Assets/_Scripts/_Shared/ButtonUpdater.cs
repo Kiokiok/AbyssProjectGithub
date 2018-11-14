@@ -29,13 +29,15 @@ public class ButtonUpdater : MonoBehaviour
     void Update()
     {
 
-        tex.text = storage.elements[0].active.ToString();
+        tex.text = storage.AllNetworkElements[0].ElemValue.ToString();
 
     }
 
 
     public void ChangeValue()
     {
+
+        val = storage.AllNetworkElements[0].ElemValue;
         val = !val;
         storage.ChangeValue(0, val);
 

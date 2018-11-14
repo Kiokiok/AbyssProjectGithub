@@ -2,14 +2,14 @@
 using AbyssObj;
 
 public class LevelComponent : MonoBehaviour {
-
+/*
     public int index;
 
     public blockType Type;
 
     public platform platform;
 
-    public InteractType InteractType;
+    //public InteractType InteractType;
 
     public string modelUsed;
 
@@ -193,6 +193,6 @@ public class LevelComponent : MonoBehaviour {
             }
 
         }
-    }
+    }*/
 
 }
