@@ -61,6 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\_PC\_Events\BaseEvent.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\EventHandler.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\LandSlide.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\OpenDoor.cs" />
     <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\CameraManager.cs" />
     <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\playerCC.cs" />
     <Compile Include="Assets\_Scripts\_Shared\ButtonUpdater.cs" />
