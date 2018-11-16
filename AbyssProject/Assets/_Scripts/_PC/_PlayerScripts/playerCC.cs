@@ -98,16 +98,20 @@ public class playerCC : MonoBehaviour
             else if (stretchKeyPressed & !crouchKeyPressed && isCrouch) ChangeCrouch(-1);
 
             // VITESSE DU MOUVEMENT
-            if (Input.GetButtonDown("Sprint") & !isCrouch & !isStretch)
+            if (Input.GetAxis("Sprint") > 0.1f & !isCrouch & !isStretch && movementSpeed != runSpeed && normalFloat < 20f)
                 movementSpeed = runSpeed;
-            else if (Input.GetButtonUp("Sprint") & !isCrouch & !isStretch)
+            else if (Input.GetAxis("Sprint") < 0.1f & !isCrouch & !isStretch && movementSpeed == runSpeed)
                 movementSpeed = walkSpeed;
 
             // DIRECTION DU MOUVEMENT
-            moveH = Input.GetAxisRaw("Horizontal");
-            moveV = Input.GetAxisRaw("Vertical");
+            if (Input.GetAxis("Horizontal") > 0.3f || Input.GetAxis("Horizontal") < -0.3f)
+                moveH = Input.GetAxis("Horizontal");
+            else moveH = 0f;
+            if (Input.GetAxis("Vertical") > 0.3f || Input.GetAxis("Vertical") < -0.3f)
+                moveV = Input.GetAxis("Vertical");
+            else moveV = 0f;
 
-            if (moveH != 0f || moveV != 0f)
+            if (moveH != 0 && Time.timeScale != 0 || moveV != 0 && Time.timeScale != 0)
                 transform.localEulerAngles = new Vector3(0f, Camera.main.transform.eulerAngles.y + Mathf.Atan2(moveH, moveV) * 180 / Mathf.PI, 0f);
 
             v3_input = new Vector3(moveH, 0f, moveV);
@@ -136,9 +140,12 @@ public class playerCC : MonoBehaviour
         //if (Input.GetAxis("Mouse Y") != 0) CameraView();
 
         // DETECTION DE DEGRES DE PENTE SOUS NOS PIEDS
+        Debug.Log(normalFloat);
         if (normalFloat >= cc.slopeLimit) movementSpeed = walkSpeed;
         else if (normalFloat <= cc.slopeLimit && normalFloat >= 20f) movementSpeed = walkSpeed;
-        else if (movementSpeed != runSpeed && Input.GetAxis("Sprint") != 0 &! isCrouch &! isStretch) movementSpeed = runSpeed;
+        else if (Input.GetAxis("Sprint") > 0.1f || Input.GetAxis("Sprint") < -0.1f)
+            if (movementSpeed != runSpeed & !isCrouch & !isStretch)
+                movementSpeed = runSpeed;
     }
 
 
@@ -227,7 +234,6 @@ public class playerCC : MonoBehaviour
             movementSpeed = crouchSpeed;
             isCrouch = true;
             isStretch = false;
-            Debug.Log("Crouch");
         }
         /*else if (a == -1)
         {
@@ -261,12 +267,12 @@ public class playerCC : MonoBehaviour
     }
 
     // Fonction qui s'occupe des mouvements de camera (1st et 3rd person)
-    void CameraView()
+    /*void CameraView()
     {
         rotationX += Input.GetAxis("Mouse Y") * dt * mouseSensitivity;
         rotationX = Mathf.Clamp(rotationX, minViewX, maxViewX);
         Camera.main.transform.localEulerAngles = new Vector3(-rotationX, 0f, 0f);
-    }
+    }*/
 
     // Fonction de mise en pause et reprise du jeu
     void PauseGame()

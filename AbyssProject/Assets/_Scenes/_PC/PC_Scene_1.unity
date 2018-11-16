@@ -204,6 +204,16 @@ Prefab:
       propertyPath: playerDir
       value: 
       objectReference: {fileID: 1838004656}
+    - target: {fileID: 114663330506957262, guid: 8ce1501245206e640b07a9a8885006d5,
+        type: 2}
+      propertyPath: rotationSpeedHorizontal
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114663330506957262, guid: 8ce1501245206e640b07a9a8885006d5,
+        type: 2}
+      propertyPath: rotationSpeedVertical
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ce1501245206e640b07a9a8885006d5, type: 2}
   m_IsPrefabAsset: 0
