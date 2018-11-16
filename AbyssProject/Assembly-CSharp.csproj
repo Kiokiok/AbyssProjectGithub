@@ -61,7 +61,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Assets\_Scripts\_PC\_ObjectScript\Object_Info.cs" />
+=======
+    <Compile Include="Assets\_Scripts\_PC\_Events\BaseEvent.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\EventHandler.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\LandSlide.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\OpenDoor.cs" />
+>>>>>>> cd84d5eb4f0d9a7b17d56775f19afd7d07e995d7
     <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\CameraManager.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\Inventory.cs" />
     <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\playerCC.cs" />
     <Compile Include="Assets\_Scripts\_Shared\ButtonUpdater.cs" />
     <Compile Include="Assets\_Scripts\_Shared\Events\_CustomEvents\Event_One.cs" />
