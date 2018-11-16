@@ -61,7 +61,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\_PC\_ObjectScript\Object_Info.cs" />
     <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\CameraManager.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\Inventory.cs" />
     <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\playerCC.cs" />
     <Compile Include="Assets\_Scripts\_Shared\ButtonUpdater.cs" />
     <Compile Include="Assets\_Scripts\_Shared\Events\_CustomEvents\Event_One.cs" />
