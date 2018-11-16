@@ -72,6 +72,11 @@
     <Compile Include="Assets\_Scripts\_Shared\LevelStore.cs" />
     <Compile Include="Assets\_Scripts\_Shared\NetworkElements\BaseNetworkElement.cs" />
     <Compile Include="Assets\_Scripts\_Shared\PlayerConnectionHandler.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\Condition.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\ScriptablesSource\Data.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\State.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\StateMachineBase.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\StateMachineBehaviour.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Projects/GitProjectAbyss/AbyssProject/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
