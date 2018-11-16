@@ -9,6 +9,7 @@ using System.Collections;
 //
 public class Data : ScriptableObject
 {
-
+    
+  
    
 }

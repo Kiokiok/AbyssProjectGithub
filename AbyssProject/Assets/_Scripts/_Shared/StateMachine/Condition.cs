@@ -2,22 +2,30 @@
 using System.Collections;
 
 [System.Serializable]
-public class Condition 
+public class Condition : ScriptableObject
 {
+
+    public string Name;
+
     public State targetState;
 
-    Data objectData;
+   
 
-    StateMachineBase parent;
+    public StateMachineBase parent;
+
+   
 
     public virtual bool Check()
     {
-
-
+        
+        
         return false;
     }
 
+    
 
-    //public static Condition[] AllConditions;
+
+
+    
 
 }

@@ -15,7 +15,7 @@ public class StateMachineBehaviour : MonoBehaviour
     {
         //machine.ChangeState(new IState());
 
-        machine.InitStates();
+        machine.Init();
     }
 
     // Update is called once per frame

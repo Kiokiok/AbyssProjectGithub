@@ -5,24 +5,23 @@ using System.Collections.Generic;
 
 
 [System.Serializable]
-public class State : ScriptableObject 
+public abstract class State : ScriptableObject 
 {
     public string Name;
 
+    public Condition[] stateConditions;
 
-    public string[] conditionsTargetStates;
 
+    
+    [HideInInspector]
+    public StateMachineBase parent;
+
+    
 
     public virtual void Enter()
     {
 
     }
-
-    public virtual State CheckConditions()
-    {
-        return null;
-    }
-   
 
     public virtual void Execute()
     {
@@ -37,10 +36,16 @@ public class State : ScriptableObject
 
     }
 
-    public void setStatesForConditions(Dictionary<string,State> sta)
+    public virtual State CheckConditions()
     {
-
-
+        foreach(Condition con in stateConditions)
+        {
+            if (con.Check())
+            {
+                return con.targetState;
+            }
+        }
+         return this;
     }
 
     
