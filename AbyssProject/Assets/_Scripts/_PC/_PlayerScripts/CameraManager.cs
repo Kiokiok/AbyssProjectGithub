@@ -80,10 +80,12 @@ public class CameraManager : MonoBehaviour {
     //First we change the camera rotation according to mouse input
     private void changeRotation()
     {
-        if (canMove)
+        if (canMove && Time.timeScale != 0)
         {
-            yaw += Input.GetAxis("Mouse X") * rotationSpeedHorizontal;
-            pitch -= Input.GetAxis("Mouse Y") * rotationSpeedVertical;
+            if (Input.GetAxis("Mouse X") > 0.3f || Input.GetAxis("Mouse X") < -0.3f)
+                yaw += Input.GetAxis("Mouse X") * rotationSpeedHorizontal;
+            if (Input.GetAxis("Mouse Y") > 0.3f || Input.GetAxis("Mouse Y") < -0.3f)
+                pitch -= Input.GetAxis("Mouse Y") * rotationSpeedVertical;
         }
 
         if (pitch > 83 || pitch < -65) pitch = oldpitch;

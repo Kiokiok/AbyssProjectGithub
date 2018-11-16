@@ -61,7 +61,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Assets\_Scripts\_PC\_ObjectScript\Object_Info.cs" />
+=======
+    <Compile Include="Assets\_Scripts\_PC\_Events\BaseEvent.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\EventHandler.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\LandSlide.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\OpenDoor.cs" />
+>>>>>>> cd84d5eb4f0d9a7b17d56775f19afd7d07e995d7
     <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\CameraManager.cs" />
     <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\Inventory.cs" />
     <Compile Include="Assets\_Scripts\_PC\_PlayerScripts\playerCC.cs" />
@@ -74,6 +81,11 @@
     <Compile Include="Assets\_Scripts\_Shared\LevelStore.cs" />
     <Compile Include="Assets\_Scripts\_Shared\NetworkElements\BaseNetworkElement.cs" />
     <Compile Include="Assets\_Scripts\_Shared\PlayerConnectionHandler.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\Condition.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\ScriptablesSource\Data.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\State.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\StateMachineBase.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\StateMachine\StateMachineBehaviour.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/game3/Documents/GitHub/AbyssProjectGithub/AbyssProject/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
