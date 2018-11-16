@@ -26,6 +26,7 @@ public class CameraManager : MonoBehaviour {
     public bool isCameraSmoothed = false;
     public float cameraSmooth = 4f;
 
+    [HideInInspector]
     public bool canMove = false;
 
 
@@ -62,7 +63,10 @@ public class CameraManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		changeRotation();
+        cameraOrigin.position = GameObject.FindGameObjectWithTag("Player").transform.position + Vector3.up * 0.8f;
+
+
+        changeRotation();
 		checkForObstacle();
 	}
 
@@ -87,7 +91,7 @@ public class CameraManager : MonoBehaviour {
 
         cameraOrigin.eulerAngles = new Vector3(pitch, yaw, 0f);
 
-        playerDir.eulerAngles = new Vector3(0, yaw, 0);
+        //playerDir.eulerAngles = new Vector3(0, yaw, 0);
 
         oldpitch = pitch;
     }
@@ -105,9 +109,12 @@ public class CameraManager : MonoBehaviour {
 
         if (Physics.Raycast(mainRay, out hit, maxDistance))
         {
-            currentDistance = hit.distance;
+            if (hit.transform.tag != "Player")
+            {
+                currentDistance = hit.distance;
 
-            wallOffset = hit.normal * 0.5f;
+                wallOffset = hit.normal * 0.5f;
+            }
         }
     }
 

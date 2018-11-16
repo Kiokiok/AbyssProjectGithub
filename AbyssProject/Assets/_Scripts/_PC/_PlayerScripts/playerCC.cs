@@ -76,43 +76,46 @@ public class playerCC : MonoBehaviour
                 onJump = false;
 
             // S'ACCROUPIR
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetButtonDown("Crouch"))
             {
                 crouchKeyPressed = true;
                 ChangeCrouch(1);
             }
-            else if (Input.GetKeyUp(KeyCode.C))
-            {
+            else if (Input.GetButtonUp("Crouch"))
                 crouchKeyPressed = false;
-            }
 
             // SE COUCHER
-            if (Input.GetKeyDown(KeyCode.X))
+            /*if (Input.GetKeyDown(KeyCode.X))
             {
                 stretchKeyPressed = true;
                 ChangeCrouch(-1);
             }
             else if (Input.GetKeyUp(KeyCode.X))
-                stretchKeyPressed = false;
+                stretchKeyPressed = false;*/
 
             if (!stretchKeyPressed && crouchKeyPressed && isStretch) ChangeCrouch(1);
             else if (!stretchKeyPressed & !crouchKeyPressed && (isCrouch || isStretch)) ChangeCrouch(0);
             else if (stretchKeyPressed & !crouchKeyPressed && isCrouch) ChangeCrouch(-1);
 
             // VITESSE DU MOUVEMENT
-            if (Input.GetKeyDown(KeyCode.LeftShift) & !isCrouch & !isStretch) movementSpeed = runSpeed;
-            else if (Input.GetKeyUp(KeyCode.LeftShift) & !isCrouch & !isStretch) movementSpeed = walkSpeed;
+            if (Input.GetButtonDown("Sprint") & !isCrouch & !isStretch)
+                movementSpeed = runSpeed;
+            else if (Input.GetButtonUp("Sprint") & !isCrouch & !isStretch)
+                movementSpeed = walkSpeed;
 
             // DIRECTION DU MOUVEMENT
             moveH = Input.GetAxisRaw("Horizontal");
             moveV = Input.GetAxisRaw("Vertical");
-            
+
+            if (moveH != 0f || moveV != 0f)
+                transform.localEulerAngles = new Vector3(0f, Camera.main.transform.eulerAngles.y + Mathf.Atan2(moveH, moveV) * 180 / Mathf.PI, 0f);
+
             v3_input = new Vector3(moveH, 0f, moveV);
-            v3_input = transform.TransformDirection(v3_input);
+            v3_input = Camera.main.transform.TransformDirection(v3_input);
             v3_input *= movementSpeed;
 
             // JUMP
-            if (Input.GetKeyDown(KeyCode.Space) & !isStretch & !isCrouch && canJump && isOnGround())
+            if (Input.GetAxisRaw("Jump") != 0 &! isStretch & !isCrouch && canJump && isOnGround())
             {
                 v3_input.y = jumpHeight;
                 onJump = true;
@@ -135,7 +138,7 @@ public class playerCC : MonoBehaviour
         // DETECTION DE DEGRES DE PENTE SOUS NOS PIEDS
         if (normalFloat >= cc.slopeLimit) movementSpeed = walkSpeed;
         else if (normalFloat <= cc.slopeLimit && normalFloat >= 20f) movementSpeed = walkSpeed;
-        else if (movementSpeed != runSpeed && Input.GetKey(KeyCode.LeftShift)) movementSpeed = runSpeed;
+        else if (movementSpeed != runSpeed && Input.GetAxis("Sprint") != 0 &! isCrouch &! isStretch) movementSpeed = runSpeed;
     }
 
 
@@ -224,8 +227,9 @@ public class playerCC : MonoBehaviour
             movementSpeed = crouchSpeed;
             isCrouch = true;
             isStretch = false;
+            Debug.Log("Crouch");
         }
-        else if (a == -1)
+        /*else if (a == -1)
         {
             // S'ALLONGER
             transform.position = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y - 1f), transform.position.z);
@@ -234,7 +238,7 @@ public class playerCC : MonoBehaviour
             movementSpeed = stretchSpeed;
             isStretch = true;
             isCrouch = false;
-        }
+        }*/
         else if (a == 0)
         {
             // SE RELEVER
