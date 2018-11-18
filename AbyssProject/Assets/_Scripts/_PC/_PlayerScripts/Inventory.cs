@@ -86,6 +86,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
+
+    //je crée l'UI de l'inventaire
     void CastInventoryUI()
     {
         tabInventory = new GameObject[tabSize];
@@ -128,4 +130,6 @@ public class Inventory : MonoBehaviour
         }
         
     }
+
+
 }
