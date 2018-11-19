@@ -7,15 +7,10 @@ public class Condition : ScriptableObject
 
     public string Name;
 
+
     public State targetState;
 
-   
-
-    public StateMachineBase parent;
-
-   
-
-    public virtual bool Check()
+    public virtual bool Check<F>(F data) 
     {
         
         
@@ -25,7 +20,6 @@ public class Condition : ScriptableObject
     
 
 
-
-    
-
 }
+
+

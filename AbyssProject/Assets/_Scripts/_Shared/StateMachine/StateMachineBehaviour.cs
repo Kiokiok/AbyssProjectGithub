@@ -5,22 +5,32 @@ using System.Collections.Generic;
 public class StateMachineBehaviour : MonoBehaviour
 {
     
-    [SerializeField]
-    StateMachineBase machine = new StateMachineBase();
+   
+    public PlayerStateMachine machine;
 
     
-   
     // Use this for initialization
     void Start()
     {
-        //machine.ChangeState(new IState());
+        
 
+
+        
         machine.Init();
+
+       
+
     }
 
     // Update is called once per frame
     void Update()
     {
         machine.Update();
+    }
+
+
+    private void FixedUpdate()
+    {
+        
     }
 }

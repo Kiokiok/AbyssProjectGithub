@@ -8,14 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d6548be32d75f4094044db945d4078, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Idle
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerState
   Name: Idle
   stateConditions:
-  - {fileID: 11400000, guid: 489a8aed92124974e8406ca72973ba27, type: 2}
-  parent:
-    currentState: {fileID: 0}
-    MachineStates: []
-    conditionsNames: []
-  Data: {fileID: 0}
+  - {fileID: 11400000, guid: aa41f4852122cbc4a957f5d4d1f58fef, type: 2}
+  stateActions: []

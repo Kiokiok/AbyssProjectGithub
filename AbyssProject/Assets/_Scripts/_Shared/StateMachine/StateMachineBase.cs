@@ -2,44 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class StateMachineBase
-{
 
+[System.Serializable]
+public class StateMachineBase<T> where T :Data
+{
     
+
+    public T data;
 
     // Le state actuel
-    [HideInInspector]
+   
     public State currentState;
 
-
-   
-
-    
-
     State newState;
-
-
 
     // Drag n Drop container
     // Les states utilisés par cette machine
     public State[] MachineStates;
 
+    [HideInInspector]
     public List<string> conditionsNames;
     
-    protected Dictionary<string, State> MachineStatesDic = new Dictionary<string, State>();
-    protected Dictionary<string, Condition> Conditions = new Dictionary<string, Condition>();
+    public Dictionary<string, State> MachineStatesDic = new Dictionary<string, State>();
+    public Dictionary<string, Condition> Conditions = new Dictionary<string, Condition>();
+    public Dictionary<string, Actions> AllActions = new Dictionary<string, Actions>();
 
 
     
 
     public void ChangeState(State newState)
     {
+        
+
         if (currentState != null)
-            currentState.Exit();
+            currentState.Exit(data);
 
         currentState = newState;
-        currentState.Enter();
+        currentState.Enter(data);
 
         newState = null;
     }
@@ -49,17 +48,24 @@ public class StateMachineBase
     {
         if (currentState != null)
         {
-            newState = currentState.CheckConditions();
+            newState = currentState.CheckConditions(data);
 
             if (newState != currentState)
                 ChangeState(newState);
 
-            currentState.Execute();
+            currentState.Execute(data);
 
             
         }
     }
 
+    public void FixedExecute()
+    {
+
+        if (currentState != null)
+            currentState.FixedExecute(data);
+
+    }
 
     public void Init()
     {      
@@ -85,21 +91,21 @@ public class StateMachineBase
        
        // Ensuite les copies sont re-liées 
        //
-       // D'abord les conditions
+       // D'abord les targetStates des conditions
        //
        foreach(var Cond in Conditions)
        {
             MachineStatesDic.TryGetValue(Cond.Value.targetState.Name, out Cond.Value.targetState);
             //Cond.Value.ObjectData = data;
-            Cond.Value.parent = this;
+            //Cond.Value.parent = this;
 
        }
 
-       //Puis les states
+       //Puis les Conditions
        //
         foreach (var Sta in MachineStatesDic)
         {
-           Sta.Value.parent = this;
+           //Sta.Value.parent = this;
            
 
             for(int i = 0; i < Sta.Value.stateConditions.Length; i++)
@@ -111,6 +117,7 @@ public class StateMachineBase
 
         SetData();
 
+        
 
     }
 
@@ -144,4 +151,7 @@ public class StateMachineBase
 
 
     }
+
+
+    
 }
