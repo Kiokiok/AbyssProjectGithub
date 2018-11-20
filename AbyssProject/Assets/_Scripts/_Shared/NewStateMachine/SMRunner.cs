@@ -19,6 +19,6 @@ public class SMRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        machine.Execute();
     }
 }

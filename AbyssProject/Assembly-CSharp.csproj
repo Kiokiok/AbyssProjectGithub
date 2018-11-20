@@ -88,6 +88,8 @@
     <Compile Include="Assets\_Scripts\_Shared\NewStateMachine\SMRunner.cs" />
     <Compile Include="Assets\_Scripts\_Shared\NewStateMachine\Storage\DataStorage.cs" />
     <Compile Include="Assets\_Scripts\_Shared\NewStateMachine\Storage\StoragePLayer.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\SimpleStateMachine\SSMBase.cs" />
+    <Compile Include="Assets\_Scripts\_Shared\SimpleStateMachine\SSMRunner.cs" />
     <Compile Include="Assets\_Scripts\_Shared\StateMachine\Actions.cs" />
     <Compile Include="Assets\_Scripts\_Shared\StateMachine\Condition.cs" />
     <Compile Include="Assets\_Scripts\_Shared\StateMachine\ScriptablesSource\Data.cs" />

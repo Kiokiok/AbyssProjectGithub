@@ -8,8 +8,7 @@ namespace SM
     public class SMPlayer : SMBase<PlayerStorageData> 
     {
 
-        
-
+       
         public SMBaseState<PlayerStorageData> CurrentState;
 
         public SMBaseState<PlayerStorageData>[] States;
@@ -26,6 +25,7 @@ namespace SM
 
         public void Init()
         {
+            
             storedData = GameObject.Instantiate<PlayerStorageData>(storedData);
         }
 
