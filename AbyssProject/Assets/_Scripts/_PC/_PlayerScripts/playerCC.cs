@@ -85,13 +85,13 @@ public class playerCC : MonoBehaviour
                 crouchKeyPressed = false;
 
             // SE COUCHER
-            /*if (Input.GetKeyDown(KeyCode.X))
+             if (Input.GetKeyDown(KeyCode.X))
             {
                 stretchKeyPressed = true;
                 ChangeCrouch(-1);
             }
             else if (Input.GetKeyUp(KeyCode.X))
-                stretchKeyPressed = false;*/
+                stretchKeyPressed = false;
 
             if (!stretchKeyPressed && crouchKeyPressed && isStretch) ChangeCrouch(1);
             else if (!stretchKeyPressed & !crouchKeyPressed && (isCrouch || isStretch)) ChangeCrouch(0);
@@ -111,11 +111,11 @@ public class playerCC : MonoBehaviour
                 moveV = Input.GetAxis("Vertical");
             else moveV = 0f;
 
-            if (moveH != 0 && Time.timeScale != 0 || moveV != 0 && Time.timeScale != 0)
-                transform.localEulerAngles = new Vector3(0f, Camera.main.transform.eulerAngles.y + Mathf.Atan2(moveH, moveV) * 180 / Mathf.PI, 0f);
+            /*if (moveH != 0 && Time.timeScale != 0 || moveV != 0 && Time.timeScale != 0)
+                transform.localEulerAngles = new Vector3(0f, Camera.main.transform.eulerAngles.y + Mathf.Atan2(moveH, moveV) * 180 / Mathf.PI, 0f);*/
 
             v3_input = new Vector3(moveH, 0f, moveV);
-            v3_input = Camera.main.transform.TransformDirection(v3_input);
+            v3_input = transform.TransformDirection(v3_input);
             v3_input *= movementSpeed;
 
             // JUMP
@@ -136,11 +136,11 @@ public class playerCC : MonoBehaviour
             PauseGame();
 
         // MOUVEMENT DE SOURIS
-        //if (Input.GetAxis("Mouse X") != 0) transform.Rotate(0f, Input.GetAxis("Mouse X") * dt * mouseSensitivity, 0f);
-        //if (Input.GetAxis("Mouse Y") != 0) CameraView();
+        if (Input.GetAxis("Mouse X") != 0) transform.Rotate(0f, Input.GetAxis("Mouse X") * dt * mouseSensitivity, 0f);
+        if (Input.GetAxis("Mouse Y") != 0) CameraView();
 
         // DETECTION DE DEGRES DE PENTE SOUS NOS PIEDS
-        Debug.Log(normalFloat);
+        //Debug.Log(normalFloat);
         if (normalFloat >= cc.slopeLimit) movementSpeed = walkSpeed;
         else if (normalFloat <= cc.slopeLimit && normalFloat >= 20f) movementSpeed = walkSpeed;
         else if (Input.GetAxis("Sprint") > 0.1f || Input.GetAxis("Sprint") < -0.1f)
@@ -235,7 +235,7 @@ public class playerCC : MonoBehaviour
             isCrouch = true;
             isStretch = false;
         }
-        /*else if (a == -1)
+        else if (a == -1)
         {
             // S'ALLONGER
             transform.position = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y - 1f), transform.position.z);
@@ -244,7 +244,7 @@ public class playerCC : MonoBehaviour
             movementSpeed = stretchSpeed;
             isStretch = true;
             isCrouch = false;
-        }*/
+        }
         else if (a == 0)
         {
             // SE RELEVER
@@ -267,12 +267,12 @@ public class playerCC : MonoBehaviour
     }
 
     // Fonction qui s'occupe des mouvements de camera (1st et 3rd person)
-    /*void CameraView()
+    void CameraView()
     {
         rotationX += Input.GetAxis("Mouse Y") * dt * mouseSensitivity;
         rotationX = Mathf.Clamp(rotationX, minViewX, maxViewX);
         Camera.main.transform.localEulerAngles = new Vector3(-rotationX, 0f, 0f);
-    }*/
+    }
 
     // Fonction de mise en pause et reprise du jeu
     void PauseGame()
