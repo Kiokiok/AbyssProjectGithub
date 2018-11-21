@@ -32,6 +32,7 @@ public class playerCC : MonoBehaviour
     bool crouchKeyPressed = false;
     bool stretchKeyPressed = false;
     bool canJump = true;
+    bool canMove = true;
     bool onJump = true;
 
     GameObject go_camInitPos;
@@ -54,15 +55,7 @@ public class playerCC : MonoBehaviour
         movementSpeed = walkSpeed;
 
         mouseSensitivity *= 50;
-
-        LaunchGame();
-    }
-
-    public void LaunchGame()
-    {
         Cursor.lockState = CursorLockMode.Locked;
-
-        Camera.main.GetComponent<CameraManager>().canMove = true;
     }
 
     // Update is called once per frame
@@ -70,7 +63,7 @@ public class playerCC : MonoBehaviour
     {
         dt = Time.deltaTime;
 
-        if (cc.isGrounded)
+        if (cc.isGrounded && canMove)
         {
             if (onJump)
                 onJump = false;
@@ -85,12 +78,12 @@ public class playerCC : MonoBehaviour
                 crouchKeyPressed = false;
 
             // SE COUCHER
-             if (Input.GetKeyDown(KeyCode.X))
+             if (Input.GetButtonDown("Crawl"))
             {
                 stretchKeyPressed = true;
                 ChangeCrouch(-1);
             }
-            else if (Input.GetKeyUp(KeyCode.X))
+            else if (Input.GetButtonUp("Crawl"))
                 stretchKeyPressed = false;
 
             if (!stretchKeyPressed && crouchKeyPressed && isStretch) ChangeCrouch(1);
@@ -164,6 +157,7 @@ public class playerCC : MonoBehaviour
         }
 
         // DEPLACE LE JOUEUR
+        if(canMove)
         cc.Move(v3_input * dt);
         
         // S'IL EST SUR UNE PENTE TROP RAIDE
@@ -291,5 +285,22 @@ public class playerCC : MonoBehaviour
         }
 
         isPause *= -1;
+    }
+
+    public IEnumerator climbAWall(GameObject g)
+    {
+        if (onJump && movementSpeed == runSpeed)
+        {
+
+            canMove = false;
+            moveV = 0;
+            moveH = 0;
+
+            transform.position = new Vector3(g.transform.position.x, g.transform.position.y + 0.5F, transform.position.z);
+        }
+
+        yield return new WaitForSeconds(1F); // ici faire l'anim pour monter -----------------------------------------------------------------------------------------------------------
+
+        canMove = true;
     }
 }

@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\_PC\_Events\BaseEvent.cs" />
+    <Compile Include="Assets\_Scripts\_PC\_Events\ClimbWall.cs" />
     <Compile Include="Assets\_Scripts\_PC\_Events\EventHandler.cs" />
     <Compile Include="Assets\_Scripts\_PC\_Events\LandSlide.cs" />
     <Compile Include="Assets\_Scripts\_PC\_Events\OpenDoor.cs" />
