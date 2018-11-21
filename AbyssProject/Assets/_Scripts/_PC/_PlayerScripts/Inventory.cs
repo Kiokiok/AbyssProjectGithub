@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Inventory : MonoBehaviour
 {
@@ -11,11 +12,27 @@ public class Inventory : MonoBehaviour
     public GameObject invCell;
     public GameObject inventoryHUD;
     public Sprite spriteOther;
+    public playerCC Playercc;
+
+
     int compteurObjets;
+    GraphicRaycaster m_Raycaster;
+    PointerEventData m_PointerEventData;
+    EventSystem m_EventSystem;
+
+
+
+
+
     // Use this for initialization
     void Start ()
     {
         CastInventoryUI();
+
+        //Fetch the Raycaster from the GameObject (the Canvas)
+        m_Raycaster = GetComponent<GraphicRaycaster>();
+        //Fetch the Event System from the Scene
+        m_EventSystem = GetComponent<EventSystem>();
 
 
     }
@@ -24,6 +41,42 @@ public class Inventory : MonoBehaviour
 	void Update ()
     {
         UpdateInventory();
+        OnUIDisplay();
+
+
+        //TEST//
+
+        
+        /*
+        // Check if the mouse was clicked over a UI element
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                //Set up the new Pointer Event
+                m_PointerEventData = new PointerEventData(m_EventSystem);
+                //Set the Pointer Event Position to that of the mouse position
+                m_PointerEventData.position = Input.mousePosition;
+
+                //Create a list of Raycast Results
+                List<RaycastResult> results = new List<RaycastResult>();
+
+                //Raycast using the Graphics Raycaster and mouse click position
+                m_Raycaster.Raycast(m_PointerEventData, results);
+
+                //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+                foreach (RaycastResult result in results)
+                {
+                    Debug.Log("Hit " + result.gameObject.name);
+                }
+            }
+
+        
+            //Debug.Log("Clicked on the UI");
+        }*/
+
+
+        
 
     }
 
@@ -129,6 +182,16 @@ public class Inventory : MonoBehaviour
             compteurObjets = 0;
         }
         
+    }
+
+    void OnUIDisplay()
+    {
+        if (Playercc.isPause == 1)
+        {
+            inventoryHUD.SetActive(false);
+        }
+        else
+            inventoryHUD.SetActive(true);
     }
 
 

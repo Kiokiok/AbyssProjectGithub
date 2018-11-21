@@ -15,6 +15,7 @@ public class playerCC : MonoBehaviour
     public float gravity;
     public float mouseSensitivity;
     public Text pauseGameText;
+    public int isPause = 1; //1 for yes, -1 for no
 
 
 
@@ -26,7 +27,6 @@ public class playerCC : MonoBehaviour
     float moveH;
     float moveV;
     float normalFloat;
-    int isPause = 1; //1 for yes, -1 for no
     bool isCrouch = false;
     bool isStretch = false;
     bool crouchKeyPressed = false;
